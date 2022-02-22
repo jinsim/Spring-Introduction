@@ -37,4 +37,9 @@ public class MemoryMemberRepository implements MemberRepository {
         // 자바 실무에서는 List를 많이 사용함.
         return new ArrayList<>(store.values());
     }
+
+    // 테스트를 위해 스토어를 비우는 메소드 제작.
+    public void clearStore() {
+        store.clear();
+    }
 }
