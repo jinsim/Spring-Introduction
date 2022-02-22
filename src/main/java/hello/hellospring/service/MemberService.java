@@ -8,8 +8,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    // 테스트할 때 문제가 발생할 수 있다.
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    // new에서 생성하는 것이 아니라, 외부에서 넣어주도록 설정한다.
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /**
      * 회원 가입
