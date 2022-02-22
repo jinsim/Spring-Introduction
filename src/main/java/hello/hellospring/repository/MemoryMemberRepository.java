@@ -32,7 +32,7 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public List<Member> finadAll() {
+    public List<Member> findAll() {
         // 저장은 Map으로하지만, 반환은 List로 한다.
         // 자바 실무에서는 List를 많이 사용함.
         return new ArrayList<>(store.values());

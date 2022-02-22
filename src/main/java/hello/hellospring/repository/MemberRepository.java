@@ -10,5 +10,5 @@ public interface MemberRepository {
     // Optional은 null일 때의 처리를 위해.
     Optional<Member> findById(Long id);
     Optional<Member> findByName(String name);
-    List<Member> finadAll();
+    List<Member> findAll();
 }
