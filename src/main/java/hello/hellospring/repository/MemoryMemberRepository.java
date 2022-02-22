@@ -1,9 +1,12 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+// 스프링이 스프링 컨테이너에 등록을 해줌.
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     // 실무에서는 동시동 문제로 인해, 중복되는 변수일 경우 ConcurrentHashMap, automiclong을 쓴다.
