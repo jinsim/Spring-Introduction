@@ -1,3 +1,6 @@
+<!--Thymeleaf의 장점은, 서버 없이 파일을 바로 열어봐도 껍데기를 볼 수 있따는 것.
+현재 파일의 경로를 /Users~/.../hello-template.html로 들어가면 볼 수 있다.
+서버 안켜면 hello! empty, 서버 켜고 템플릿 엔진으로 작동하면 th:text에 넣은 내용으로 바뀐다.-->
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <p th:text="'hello ' + ${name}">hello! empty</p>
