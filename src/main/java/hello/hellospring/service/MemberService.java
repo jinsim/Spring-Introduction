@@ -10,14 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 // 스프링이 실행될 때, 스프링 컨테이너에 이를 등록해줌.
-@Service
 public class MemberService {
     // 테스트할 때 문제가 발생할 수 있다.
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
     // MemberRepository의 구현체인 MemoryMemberRepository가 스프링 컨테이너에서 주입된다.
-    @Autowired
     // new에서 생성하는 것이 아니라, 외부에서 넣어주도록 설정한다.
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
