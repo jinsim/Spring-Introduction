@@ -4,8 +4,11 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 // @Controller를 붙이면, 스프링이 처음에 시작할 때 스프링 컨테이너가 생기는데,
 // 거기에 MemberController 객체를 생성해서 스프링에 넣어두고 스프링이 관리한다.
@@ -42,6 +45,14 @@ public class MemberController {
         memberService.join(member);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        // 모든 멤버를 모델에 담아서, 화면에 넘긴다.
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "/members/memberList";
     }
 
 

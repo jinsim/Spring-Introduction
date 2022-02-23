@@ -1,0 +1,28 @@
+<!--thymeleaf의 문법인 th:each로, MemberController에서 받아온 members에서 요소 각각을 보여준다.
+${member.id} 등은 property 접근 방식(Getter Setter)을 이용해서 id 등을 가져온다.-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
