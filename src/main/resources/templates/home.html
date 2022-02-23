@@ -1,0 +1,18 @@
+<!--요청이 들어오면 스프링 컨테이너 안에 관련 컨트롤러가 있는지 찾고,
+없으면 정적 컨텐츠(resources/static/...)를 찾는다. 따라서 기존 웰컴 페이지 대신 얘가 보인다.-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+  <div>
+    <h1>Hello Spring</h1> <p>회원 기능</p>
+    <p>
+      <a href="/members/new">회원 가입</a> <a href="/members">회원 목록</a>
+    </p>
+  </div>
+</div> <!-- /container -->
+
+</body>
+</html>
+
