@@ -6,9 +6,12 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+// JPA는 데이터를 저장하거나 변경할 때 항상 트랜젝션안에서 실행돼야함.
+@Transactional
 // 스프링이 실행될 때, 스프링 컨테이너에 이를 등록해줌.
 public class MemberService {
     // 테스트할 때 문제가 발생할 수 있다.
