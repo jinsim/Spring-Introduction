@@ -28,6 +28,8 @@ public class MemberController {
     // Constructor 불러온 것.
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        // AOP로 인해 생성된 프록시 서비스가 호출 되는지 확인하기 위해
+        System.out.println("memberService = " + memberService.getClass());
     }
 
     // /members/new에 get 요청을 보내는 경우
