@@ -28,6 +28,9 @@ public class MemberService {
      * 회원 가입
      */
     public Long join(Member member) {
+
+        long start = System.currentTimeMillis();
+
         // Optional로 감싸면, 그 안에 Member 객체가 있어서 여러 메소드를 불러와 이용할 수 있다.
         // 그래서 요즘엔 null일 가능성이 있으면 Optional로 감싸서 반환해준다.
         // orElseGet으로 값이 있으면 꺼내고 아니면 ~를 실행해라. 이런 것도 많이 사용한다.
@@ -43,9 +46,17 @@ public class MemberService {
 //                    throw new IllegalStateException("이미 존재하는 회원입니다.");
 //                });
 
-        validateDuplicateMember(member);
-        memberRepository.save(member);
-        return member.getId();
+        // 시간 측정을 위해 try, finally. 예외가 터져도 시간은 측정되어야하기 때문에.
+        try {
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
+
     }
 
     private void validateDuplicateMember(Member member) {
@@ -59,7 +70,15 @@ public class MemberService {
      * 전체 회원 조회
      */
     public List<Member> findMembers() {
-        return memberRepository.findAll();
+        long start = System.currentTimeMillis();
+
+        try {
+            return memberRepository.findAll();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
     }
 
     /**
