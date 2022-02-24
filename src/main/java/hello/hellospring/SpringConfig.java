@@ -12,7 +12,9 @@ import javax.sql.DataSource;
 // 스프링이 시작될 때 파일을 읽는다.
 @Configuration
 public class SpringConfig {
+
 /*
+Jdbc를 위한 코드
     // @Configuration 한 것도 스프링 빈으로 관리가 된다.
     // 스프링이  application.properties에 있는 정보들을 보고 자체적으로 생성해 준다.
     private DataSource dataSource;
@@ -23,6 +25,9 @@ public class SpringConfig {
     }
 */
 
+/*
+JPA를 위한 코드
+
     // @PersistenceContext로 받아도 되지만, 그냥 아래처럼 스프링에서 DI 해줘도 됨.
     private EntityManager em;
 
@@ -30,13 +35,23 @@ public class SpringConfig {
     public SpringConfig(EntityManager em) {
         this.em = em;
     }
+*/
+
+    private final MemberRepository memberRepository;
+
+    @Autowired // 생성자가 1개면 생략 가능
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
 
     // 아래 로직을 거치고 난 후 스프링 빈에 등록을 해준다.
     // 매개변수 자리에 MemoryMemberRepository 를 반환받는다.(스프링 빈에 등록되어있음)
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
+/*
 
     @Bean
     public MemberRepository memberRepository() {
@@ -44,8 +59,9 @@ public class SpringConfig {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
 //        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
+//        return new JpaMemberRepository(em);
     }
+*/
 
 
 }
